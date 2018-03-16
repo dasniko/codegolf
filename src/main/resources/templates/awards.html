@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/master::head"></head>
+<body>
+
+<div th:replace="fragments/master::navbar"></div>
+
+<main>
+    <div class="container section">
+        <h4 th:text="#{awards.title}"></h4>
+        <p th:utext="#{awards.text}"></p>
+
+        <ul class="collection with-header awards">
+            <li class="collection-header">
+                <h5 th:text="#{awards.t1}"></h5>
+            </li>
+            <li class="collection-item avatar">
+                <a href="https://www.variobot.com/varikabo" target="_blank">
+                    <img src="/images/varikabo.jpg" title="Variobot Varikabo" class="circle prize"/>
+                </a>
+                <div th:text="#{awards.t1.title}" class="title strong"></div>
+                <p>&nbsp;</p>
+                <p th:utext="#{awards.t1.text(#{sponsor1.link}, #{sponsor1.name})}"></p>
+                <a th:href="#{sponsor1.link}" target="_blank">
+                    <img src="/images/bit-logo.png" th:title="#{sponsor1.name}" style="max-width: 150px"/>
+                </a>
+                <br/><br/><br/><br/><br/>
+            </li>
+
+            <li class="collection-header">
+                <h5 th:text="#{awards.t2}"></h5>
+            </li>
+            <li class="collection-item avatar">
+                <img src="/images/books.jpg" title="dpunkt Buchpaket" class="circle prize"/>
+                <div th:text="#{awards.t2.title}" class="title strong"></div>
+                <p>&nbsp;</p>
+                <p th:utext="#{awards.t2.text(#{sponsor2.link}, #{sponsor2.name})}"></p>
+                <a th:href="#{sponsor2.link}" target="_blank">
+                    <img src="/images/dpunkt_logo.jpg" th:title="#{sponsor2.name}" style="max-width: 150px"/>
+                </a>
+            </li>
+
+            <li class="collection-header">
+                <h5 th:text="#{awards.t3}"></h5>
+            </li>
+            <li class="collection-item avatar">
+                <img src="/images/hoodie.jpg" title="JavaLand Hoodie (Photo: Schuchrat Kurbanov)" class="circle prize"/>
+                <div th:text="#{awards.t3.title}" class="title strong"></div>
+                <p>&nbsp;</p>
+                <p th:utext="#{awards.t3.text(#{sponsor3.link}, #{sponsor3.name})}"></p>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <small style="position: absolute; left: 20px; bottom: 10px; color: white;">Photo: Schuchrat Kurbanov</small>
+            </li>
+
+        </ul>
+
+    </div>
+</main>
+
+<footer th:replace="fragments/master::footer"></footer>
+</body>
+</html>

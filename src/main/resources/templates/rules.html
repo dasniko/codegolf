@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/master::head"></head>
+<body>
+
+<div th:replace="fragments/master::navbar"></div>
+
+<main>
+    <div class="container section">
+        <h4 th:text="#{rules.title}"></h4>
+        <p th:utext="#{rules.text}"></p>
+        <ul class="collection">
+            <li class="collection-item" th:utext="#{rules.r1}"></li>
+            <li class="collection-item" th:utext="#{rules.r2}"></li>
+            <li class="collection-item" th:utext="#{rules.r3}"></li>
+            <li class="collection-item" th:utext="#{rules.r4}"></li>
+            <li class="collection-item" th:utext="#{rules.r5}"></li>
+            <li class="collection-item" th:utext="#{rules.r6}"></li>
+            <li class="collection-item" th:utext="#{rules.r7}"></li>
+            <li class="collection-item" th:utext="#{rules.r8}"></li>
+        </ul>
+        <p th:utext="#{rules.text2}"></p>
+    </div>
+</main>
+
+<footer th:replace="fragments/master::footer"></footer>
+</body>
+</html>

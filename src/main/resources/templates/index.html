@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/master::head"></head>
+<body>
+
+<div th:replace="fragments/master::navbar"></div>
+
+<main>
+    <div class="container section">
+        <h3 th:text="#{index.title}"></h3>
+        <div class="row">
+            <div class="col s12">
+                <p class="flow-text" th:utext="#{index.text}"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center easternblue-text">
+                        <i class="material-icons" th:text="#{index.teaser1.icon}"></i>
+                    </h2>
+                    <h5 class="center" th:text="#{index.teaser1.title}"></h5>
+                    <p class="light" th:utext="#{index.teaser1.text}"></p>
+                    <p>
+                        <a th:href="#{index.teaser1.link}" th:text="#{index.teaser.more} + ' &raquo;'"></a>
+                    </p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center easternblue-text">
+                        <i class="material-icons" th:text="#{index.teaser2.icon}"></i>
+                    </h2>
+                    <h5 class="center" th:text="#{index.teaser2.title}"></h5>
+                    <p class="light" th:utext="#{index.teaser2.text(#{sponsor1.link}, #{sponsor1.name})}"></p>
+                    <p>
+                        <a th:href="#{index.teaser2.link}" th:text="#{index.teaser.more} + ' &raquo;'"></a>
+                    </p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center easternblue-text">
+                        <i class="material-icons" th:text="#{index.teaser3.icon}"></i>
+                    </h2>
+                    <h5 class="center" th:text="#{index.teaser3.title}"></h5>
+                    <p class="light" th:utext="#{index.teaser3.text}"></p>
+                    <p>
+                        <a th:href="#{index.teaser3.link}" th:text="#{index.teaser.more} + ' &raquo;'"></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center">
+                <a href="/rules" th:text="#{index.start}" class="btn btn-large wave-effect waves-light easternblue" style="margin-top: 20px; padding: 0 7rem;"></a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/master::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/master::head"></head>
+<body>
+
+<div th:replace="fragments/master::navbar"></div>
+
+<main>
+    <div class="container section">
+        <h4 th:text="#{results.title}"></h4>
+        <p th:utext="#{results.text}"></p>
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li th:each="e,status : ${resultEntryList}">
+                <div class="collapsible-header" th:onclick="${'loadSourcecode(''' + e.username + ''', this)'}">
+                    <span th:text="${status.count + '.'}"></span>
+                    <img th:src="${beans.Gravatar.imageUrlFrom(e.email)}" class="circle gravatar"/>
+                    <span th:text="${e.firstName + ' ' + e.lastName}" class="title"></span>:
+                    <em><span th:text="${e.countChars + ' characters'}"></span></em>
+                </div>
+                <div class="collapsible-body"><pre></pre></div>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<footer th:replace="fragments/master::footer"></footer>
+</body>
+</html>

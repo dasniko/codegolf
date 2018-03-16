@@ -1,0 +1,22 @@
+keycloak:
+  enabled: false
+  resource: codegolf
+  realm: ${KC_REALM}
+  auth-server-url: ${KC_URL}
+  credentials:
+    secret: ${KC_SECRET}
+  ssl-required: external
+  principal-attribute: preferred_username
+  securityConstraints:
+      - authRoles:
+        - user
+        securityCollections:
+        - name: protected
+          patterns:
+            - /play
+
+codegolf:
+  lambdaUrl: ${LAMBDA_URL}
+  submissionsAllowed: true
+  showResults: false
+  admin: ${ADMIN_EMAIL}

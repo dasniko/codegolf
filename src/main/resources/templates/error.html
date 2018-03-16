@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/master::head"></head>
+<body>
+
+<div th:replace="fragments/master::navbar"></div>
+
+<main>
+    <div class="container section">
+        <h4 th:text="#{error.title}"></h4>
+        <div class="row">
+            <div class="col s12">
+                <p class="flow-text" th:text="#{error.text}"></p>
+            </div>
+            <div class="col s12">
+                <p th:text="${status + ' ' + error}" class="red-text"/>
+                <p th:text="${message}"/>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/master::footer"></footer>
+</body>
+</html>

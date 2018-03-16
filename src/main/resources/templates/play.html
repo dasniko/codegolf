@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/master::head"></head>
+<body>
+
+<div th:replace="fragments/master::navbar"></div>
+
+<main>
+    <div class="container section">
+        <h4 th:text="#{play.title}"></h4>
+        <h5 th:text="#{play.subtitle}"></h5>
+        <div class="row">
+            <div class="col s12">
+                <div th:utext="#{play.text}"></div>
+                <ul class="regular">
+                    <li th:utext="#{play.t1}"></li>
+                    <li th:utext="#{play.t2}"></li>
+                    <li th:utext="#{play.t3}"></li>
+                    <ul style="margin-left: 16px;">
+                        <li><a th:href="#{play.t4}" target="_blank" th:utext="#{play.t4}" class="easternblue-text"></a></li>
+                        <li><a th:href="#{play.t5}" target="_blank" th:utext="#{play.t5}" class="easternblue-text"></a></li>
+                        <li><a th:href="#{play.t6}" target="_blank" th:utext="#{play.t6}" class="easternblue-text"></a></li>
+                        <li><a th:href="#{play.t7}" target="_blank" th:utext="#{play.t7}" class="easternblue-text"></a></li>
+                    </ul>
+                </ul>
+                <div th:utext="#{play.text2}"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 strong" th:utext="#{play.example}"></div>
+            <div class="col s12 m4">
+                <div class="strong" th:text="#{play.input}"></div>
+                <pre>2018-03-13</pre><br/>
+            </div>
+            <div class="col s12 m8">
+                <div class="strong" th:text="#{play.output}"></div>
+                <pre>3</pre> <span th:text="'(' + #{play.result} + ')'"></span><br/>
+            </div>
+        </div>
+        <hr/>
+        <div class="row" th:if="${submissionAllowed}">
+            <div class="col s12 strong" th:text="#{play.code}"></div>
+            <div class="col s12" style="font-style: italic" th:text="#{stayfair}"></div>
+            <form class="col s12" th:action="@{/play}" th:object="${playRequest}" method="post" onsubmit="lockScreen()">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <pre>public class Codegolf {
+  public int play(String s) {
+    // your code goes here:
+    <textarea th:field="*{sourcecode}" class="sourcebox"></textarea>
+  }
+}</pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button class="btn waves-effect waves-light easternblue" type="submit">
+                            <span th:text="#{play.submit}"></span>
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row" th:if="${!submissionAllowed}">
+            <h5 class="col s12 red-text" th:text="#{play.closed}"></h5>
+        </div>
+        <div th:if="${playResult != null}" class="row">
+            <div class="col s12" th:if="${playResult.success}">
+                <h5 th:text="#{play.success.title}"></h5>
+                <p th:text="#{play.success.text}"></p>
+                <p th:text="#{play.success.message(${playResult.count})}"></p>
+                <a href="/results" class="easternblue-text" th:utext="#{play.success.link}"></a>
+            </div>
+            <div class="col s12" th:if="${!playResult.success}">
+                <h5 class="red-text" th:text="#{play.failure.title}"></h5>
+                <p th:text="#{play.failure.text}"></p>
+                <pre th:text="${playResult.result}"></pre>
+                <p th:text="#{play.failure.message}"></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="fragments/master::lock"></div>
+
+<footer th:replace="fragments/master::footer"></footer>
+<script type="text/javascript" src="/webjars/autosize/dist/autosize.min.js"></script>
+<script type="text/javascript">
+    autosize($('textarea'));
+</script>
+</body>
+</html>
